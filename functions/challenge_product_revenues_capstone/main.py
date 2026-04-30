@@ -5,13 +5,10 @@ quantities_sold = [150, 200, 100, 50]
 
 def calculate_revenue(prices, quantities_sold):
     return [prices[i] * quantities_sold[i] for i in range(len(prices))]
-
-def formatted_output(products, revenues):
-    # Pair products with revenues and sort by product name
-    revenue_per_product = sorted(zip(products, revenues), key=lambda x: x[0])
-    # Print each line
-    for name, rev in revenue_per_product:
+revs = calculate_revenue(prices, quantities_sold)
+revenue_per_product = sorted(zip(products, revs),key = lambda x:x[0])
+def formatted_output(list_to_print):
+    for name, rev in list_to_print:
         print(f"{name} has total revenue of ${rev}")
 
-revs = calculate_revenue(prices, quantities_sold)
-formatted_output(products, revs)
+formatted_output(revenue_per_product)
